@@ -38,10 +38,6 @@ const timeDistance = (from, to) => {
     return `${days} d ${('0' + hours).slice(-2)}:${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`;
 };
 
-// setInterval(() => document.getElementById("show").textContent = (new Date().toLocaleTimeString()),1)
-
-// document.getElementById("show").textContent = new Date(now)
-
 document.getElementById("eventheader").textContent = eventEnded ? "Next Event" : "Current Event"
 
 document.getElementById("banner").setAttribute("src", "https://yaycupcake.github.io/engstars-events/chapter-banner/banners/chapter_campaign_rectangle1_" + (22000000 + currentPeriod) + ".png")
