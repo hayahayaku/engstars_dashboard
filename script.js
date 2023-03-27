@@ -86,7 +86,7 @@ if (!eventEnded) {
             document.getElementById("freewhispass").textContent = "Whistles left from daily missions: " + whistlesLeft
         }
         document.getElementById("vip2").textContent = "Whistles left from VIP II: " + (15 * (8 - currentDay))
-    },10000)
+    })
 } else {
     document.getElementById("countdown_header").textContent = "Time Until Start"
     setInterval(() => {
@@ -101,5 +101,5 @@ if (!eventEnded) {
             document.getElementById("freewhispass").textContent = "Extra whistles from daily missions: " + 16
         }
         document.getElementById("vip2").textContent = "Extra whistles from VIP II: " + (15 * 14)
-    }, 10000)
+    })
 }
