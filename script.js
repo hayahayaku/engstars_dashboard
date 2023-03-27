@@ -57,6 +57,9 @@ fetch(url)
     var shorthand = data[0][Object.keys(data[0])[1]] + " Event"
     eventType = shorthand.split(" ").at(-2)
     document.getElementById("eventshorthand").textContent = shorthand
+    if (eventType == "Tour") {
+        document.getElementById("tourremarks").textContent = "For tour events the cards are listed from the lowest to highest points required for the first copy"
+    }
   });
 
 document.getElementById("starttime").textContent = new Date(startTime).toString()
@@ -78,8 +81,7 @@ if (!eventEnded) {
         document.getElementById("eventday").textContent = "Event Day: " + currentDay
         var starryDay = Math.floor((now-startTime+ONE_DAY)/ONE_DAY)
         document.getElementById("starryday").textContent = "Starry Day: " + starryDay
-        var extraPts = (5000 * 3 * (9-starryDay)) + (6000 * (9 - (currentDay + 1)))
-        document.getElementById("extrapts").textContent = "Extra points left from starries and talent (assuming max talent): " + extraPts
+        document.getElementById("extrapts").textContent = "Extra points left from starries and talent (assuming max talent): " + (5000 * 3 * (9-starryDay)) + (6000 * (9 - (currentDay + 1)))
         if (eventType == "Unit" || eventType == "Shuffle") {
             var passesLeft = 50 * (9 - (currentDay + 1))
             document.getElementById("freewhispass").textContent = "Passes left from daily missions: " + passesLeft
