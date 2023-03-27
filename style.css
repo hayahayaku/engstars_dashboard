@@ -1,0 +1,18 @@
+* {
+    font-family: sans-serif;
+    text-align: center;
+}
+h2 {
+    font-weight: unset;;
+}
+
+.pink {
+    color: pink;
+}
+
+div>p {
+    background-color: red;
+}
+#show {
+    color:greenyellow;
+}
