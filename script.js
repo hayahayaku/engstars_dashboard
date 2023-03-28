@@ -12,7 +12,7 @@ const eventProportion = offDuration / eventSpace
 
 
 
-var now = new Date().getTime()
+var now = new Date().getTime()// + ONE_DAY*20
 var nowSinceFirstEvent = now - referenceTime
 
 var eventEnded = (nowSinceFirstEvent/eventSpace + 1) % 1 < eventProportion
@@ -56,6 +56,9 @@ fetch(url)
     if (eventType == "Tour") {
         document.getElementById("tourremarks").textContent = "For tour events the cards are listed from the lowest to highest points required for the first copy"
     }
+    if (!eventEnded && eventType == "Tour") {
+        document.getElementById("tourstarry").style.display = 'block';    
+    }
   });
 
 document.getElementById("starttime").textContent = new Date(startTime).toString()
@@ -69,7 +72,7 @@ if (!eventEnded) {
     document.getElementById("countdown_header").textContent = "Time Left"
 
     setInterval(() => {
-        now = new Date().getTime()
+        now = new Date().getTime()// + ONE_DAY*20
         document.getElementById("countdown").textContent = (timeDistance(now,endTime))
     })
     setInterval(() => {
@@ -77,23 +80,26 @@ if (!eventEnded) {
         document.getElementById("eventday").textContent = "Event Day: " + currentDay
         var starryDay = Math.floor((now-startTime+ONE_DAY)/ONE_DAY)
         document.getElementById("starryday").textContent = "Starry Day: " + starryDay
-        document.getElementById("extrapts").textContent = "Extra points left from starries and talent (assuming max talent): " + (5000 * 3 * (9-starryDay)) + (6000 * (9 - (currentDay + 1)))
+        document.getElementById("extrapts").textContent = "Extra points left from starries and talent (assuming max talent): " + ((5000 * 3 * (9-starryDay)) + (6000 * (9 - (currentDay + 1))))
         if (eventType == "Unit" || eventType == "Shuffle") {
             var passesLeft = 50 * (9 - (currentDay + 1))
             document.getElementById("freewhispass").textContent = "Passes left from daily missions: " + passesLeft
         } else if (eventType == "Tour") {
             var whistlesLeft = 2 * (9 - (currentDay + 1))
             document.getElementById("freewhispass").textContent = "Whistles left from daily missions: " + whistlesLeft
+            document.getElementById("tsmin").textContent = "Doing only 10 dia starries a day: " + ((starryDay * 2.5) + 7.5) 
+            document.getElementById("tsmax").textContent = "Doing all 12 starries a day: " + ((starryDay * 3) + 3) 
         }
         document.getElementById("vip2").textContent = "Whistles left from VIP II: " + (15 * (8 - currentDay))
     })
 } else {
     document.getElementById("countdown_header").textContent = "Time Until Start"
     setInterval(() => {
-        now = new Date().getTime()
+        now = new Date().getTime()// + ONE_DAY*20
         document.getElementById("countdown").textContent = (timeDistance(now,startTime))
     })
     setInterval(() => {
+        document.getElementById("daycountremark").textContent = "Event day and starry day counter will be shown when the event starts"
         document.getElementById("extrapts").textContent = "Extra points from starries and talent (assuming max talent): " + 189000
         if (eventType == "Unit" || eventType == "Shuffle") {
             document.getElementById("freewhispass").textContent = "Extra passes from daily missions: " + 400
