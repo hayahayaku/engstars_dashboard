@@ -1,26 +1,17 @@
 // Reference variables, in milliseconds
-
-// the start of first "event period"
-const referenceTime = 1655694000000
-
+const referenceTime = 1655694000000 // the start of first "event period"
 const ONE_DAY = 8.64e+7
-
-const eventSpace = 1209600000
+const eventPeriodLength = 1209600000
 const onDuration = 727200000
 const offDuration = 482400000
-const eventProportion = offDuration / eventSpace
-
-
+const eventProportion = offDuration / eventPeriodLength
 
 var now = new Date().getTime()// + ONE_DAY*20
 var nowSinceFirstEvent = now - referenceTime
-
-var eventEnded = (nowSinceFirstEvent/eventSpace + 1) % 1 < eventProportion
-
-var currentPeriod =  Math.floor(nowSinceFirstEvent / eventSpace) + 1
-
-var startTime = referenceTime + ((currentPeriod - 1) * eventSpace) + offDuration
-var endTime = referenceTime + ((currentPeriod) * eventSpace)
+var eventEnded = (nowSinceFirstEvent/eventPeriodLength + 1) % 1 < eventProportion
+var currentPeriod =  Math.floor(nowSinceFirstEvent / eventPeriodLength) + 1
+var startTime = referenceTime + ((currentPeriod - 1) * eventPeriodLength) + offDuration
+var endTime = referenceTime + ((currentPeriod) * eventPeriodLength)
 
 let eventType;
 
@@ -50,7 +41,7 @@ fetch(url)
   .then((res) => res.json())
   .then((data) => {
     document.getElementById("eventname").textContent = data[0][Object.keys(data[0])[0]]
-    var shorthand = data[0][Object.keys(data[0])[1]] + " Event"
+    var shorthand = data[0][Object.keys(data[0])[1]] + " Event (Event No. " + currentPeriod + ")"
     eventType = shorthand.split(" ").at(-2)
     document.getElementById("eventshorthand").textContent = shorthand
     if (eventType == "Tour") {
