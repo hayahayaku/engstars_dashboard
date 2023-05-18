@@ -10,7 +10,7 @@ body {
     padding: 0.2em;
     vertical-align: text-top;
 }
-#header>img {
+#header img {
     display: inline;
     height: 1em;
 }
