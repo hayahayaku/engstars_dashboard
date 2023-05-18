@@ -8,6 +8,11 @@ body {
 #header {
     background-color: #AAA;
     padding: 0.2em;
+    vertical-align: text-top;
+}
+#header>img {
+    display: inline;
+    height: 1em;
 }
 .remarks {
     color: grey;
