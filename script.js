@@ -42,7 +42,7 @@ fetch(url)
   .then((data) => {
     document.getElementById("eventname").textContent = data[0][Object.keys(data[0])[0]]
     var shorthand = data[0][Object.keys(data[0])[1]] + " Event (Event No. " + currentPeriod + ")"
-    eventType = shorthand.split(" ").at(-2)
+    eventType = shorthand.split(" ").at(-5)
     document.getElementById("eventshorthand").textContent = shorthand
     if (eventType == "Tour") {
         document.getElementById("tourremarks").textContent = "For tour events the cards are listed from the lowest to highest points required for the first copy"

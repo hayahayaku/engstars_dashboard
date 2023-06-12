@@ -6,7 +6,7 @@ body {
     max-width: 100%;
 }
 #header {
-    background-color: #AAA;
+    background-color: #888;
     padding: 0.2em;
     vertical-align: text-top;
 }
@@ -19,7 +19,7 @@ body {
     font-size: small;
 }
 #tourstarry {
-    background-color: #AAA;
+    background-color: #888;
     padding: 0.1em;
     width: 80%;
     max-width: 100%;
